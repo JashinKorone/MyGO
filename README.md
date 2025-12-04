@@ -2,45 +2,27 @@
 This is the repository for paper "Modality-incomplete Fake News Video Detection via Prompt-assisted Modality Disentangling Model", accepted by ACM Transactions on Multimedia Computing, Communications, and Applications (TOMM) in 2025. 
 
 ## 1. Setup
-- Use 'requirements.txt' to install the necessary dependencies for python environments.
+- Use 'requirements.txt' to install the necessary dependencies for python environments. We recommend using Python 3.8 or later.
+- Download the required data to dir ~/MyGO/dataset
 
+## 3. Dataset
+The proposed FakeSV+ dataset is an extension of FakeSV dataset. Please sign the agreement in this [GitHub Repository](https://github.com/ICTMCG/FakeSV) to get full access to the FakeSV dataset first, then use the ~/MyGO/src/dataset_mask.py to generate the FakeSV+ dataset.
 
 ## 2. Usage
 To run MyGO, please follow the steps below:
 ```shell
-cd ~/mygo/
+cd ~/MyGO/src
 # Change directory to the source code folder
-python data_utils.py 
-# Pulling epidemic data from Google, CSSE. 
-python run_models.py --forecast_date 2021-05-01 
-# Running ensemble for MSGNN
-python run_ensemble.py --forecast_date 2021-05-01
-# Get the predicting results
-# check '../outputs/2021-05-01_forecast.csv' for details
+python dataset_mask.py --mask_ratio 0.3 --mask_type GCNet-v2 --dataset FakeSV --min_modality 1 --preserve_ratio 0 --masker_fp masker.json
+# Masking the dataset
+python main.py 
 ```
 
 ## 3. Note
-- To run MSGNN, an NVIDIA GPU with at least 6GB memory is required.
-- The code is implemented on a server with Intel Core i7 10700F, 32GB of RAM, an NVIDIA RTX 2070 SUPER and Ubuntu 22.04.1 LTS.  
+- The code is implemented on a server with Intel(R) Xeon(R) Gold 5218 CPU @ 2.30GHz, 256GB of RAM, an NVIDIA Tesla V100 PCIe 32GB and CentOS 7.  
 
 ## 4. Citation
 If you find this repository useful in your research, please consider citing:
 ```script
-@Article{Qiu2024,
-author={Qiu, Mingjie
-and Tan, Zhiyi
-and Bao, Bing-Kun},
-title={MSGNN: Multi-scale Spatio-temporal Graph Neural Network for epidemic forecasting},
-journal={Data Mining and Knowledge Discovery},
-year={2024},
-month={Jul},
-day={01},
-volume={38},
-number={4},
-pages={2348-2376},
-issn={1573-756X},
-doi={10.1007/s10618-024-01035-w},
-url={https://doi.org/10.1007/s10618-024-01035-w}
-}
-
+To be determined
 ```
