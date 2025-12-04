@@ -1,0 +1,10 @@
+fea_dim: [128]
+dropout: [0.3]
+num_heads: 4
+cl_loss_wgt: 0.1
+cl_temp: 0.2
+
+lstm_num_layer: 1
+
+hyper_parameters: [fea_dim,dropout]
+

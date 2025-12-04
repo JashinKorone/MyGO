@@ -1,0 +1,11 @@
+# split mode
+dataset_mode: 'time'
+fold: 5
+
+
+# name of features
+audio_path: '/audio/'
+frame_path: '/ptvgg19_frames/'
+c3d_path: '/c3d/'
+text_path: '/txt/'
+emb_path: '/embs/'

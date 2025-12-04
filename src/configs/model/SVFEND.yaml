@@ -1,0 +1,5 @@
+fea_dim: [256]
+dropout: 0
+num_heads: 4
+
+hyper_parameters: ["fea_dim"]

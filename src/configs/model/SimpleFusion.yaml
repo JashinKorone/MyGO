@@ -1,0 +1,4 @@
+fea_dim: [128]
+dropout: 0
+
+hyper_parameters: ["fea_dim"]
