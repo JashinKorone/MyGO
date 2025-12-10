@@ -1,5 +1,5 @@
 # MyGO
-This is the repository for paper "Modality-incomplete Fake News Video Detection via Prompt-assisted Modality Disentangling Model", accepted by ACM Transactions on Multimedia Computing, Communications, and Applications (TOMM) in 2025. 
+This is the repository for paper "MyGO: Modality-incomplete Fake News Video Detection via Prompt-assisted Modality Disentangling Model", accepted by ACM Transactions on Multimedia Computing, Communications, and Applications (TOMM) in 2025. 
 
 ## 1. Setup
 - Use 'requirements.txt' to install the necessary dependencies for python environments. We recommend using Python 3.8 or later.
