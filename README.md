@@ -24,5 +24,18 @@ python main.py
 ## 4. Citation
 If you find this repository useful in your research, please consider citing:
 ```script
-To be determined
+@article{Qiu2026,
+author = {Qiu, Mingjie and Tan, Zhiyi and Bao, Bing-Kun},
+title = {MyGO: Modality-incomplete Fake News Video Detection via Prompt-assisted Modality Disentangling Model},
+year = {2026},
+issue_date = {February 2026},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {22},
+number = {2},
+issn = {1551-6857},
+url = {https://doi.org/10.1145/3785481},
+doi = {10.1145/3785481},
+journal = {ACM Trans. Multimedia Comput. Commun. Appl.},
+}
 ```
