@@ -1,0 +1,29 @@
+# MyGO (TOMM 2025) -- Sec. 4.3 Implementation Details
+
+# feature / network
+fea_dim: [128]
+dropout: [0.1]
+num_heads: 4
+prompt_tokens: 1
+
+# loss weights, Eq. 14
+ctrs_loss_wgt: 0.3        # alpha, contrastive block
+orth_loss_wgt: 0.2        # beta, orthogonal constraint block
+cl_temp: 0.2              # tau, contrastive temperature
+
+# PMA, Sec. 3.4
+use_pma: True             # prompt memory + loss regularizer
+use_pma_loss: True        # -w/o PMA loss ablation -> False
+use_prompt: True          # missing prompts as attention suffix
+prompt_top_k: 10          # K, number of prompt candidates per batch
+warmup_epochs: 5          # warm-up stage, regularizer stays deactivated
+pma_active_window: 5      # size of the active memory sliding window
+pma_decay: 0.9            # decaying factor of the inactive memory
+pma_weight: 1.0           # u, predefined weight of Eq. 13
+pma_max_scale: 3.0        # upper bound of the regularization term
+
+# ablation switches
+use_caption_weight: True  # -w/o CKA caption weighting -> False
+disentangle: True         # -w/o MDN -> False
+
+hyper_parameters: [fea_dim, dropout]

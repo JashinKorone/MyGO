@@ -9,7 +9,14 @@ import re
 import os
 import yaml
 import torch
-from logging import getLogger
+
+SMALLER_METRICS = ('rmse', 'mae', 'logloss')
+# Options that may be given as a list in order to be swept as a grid.
+SWEEPABLE_KEYS = (
+    'seed', 'batch_size', 'fea_dim', 'dropout', 'learning_rate', 'num_heads',
+    'prompt_top_k', 'ctrs_loss_wgt', 'orth_loss_wgt', 'cl_temp', 'pma_weight',
+    'warmup_epochs',
+)
 
 
 class Config(object):
@@ -96,12 +103,20 @@ class Config(object):
         return loader
 
     def _set_default_parameters(self):
-        smaller_metric = ['rmse', 'mae', 'logloss']
-        valid_metric = self.final_config_dict['valid_metric']
-        self.final_config_dict['valid_metric_bigger'] = True
-        # if seed not in hyper_parameters, then add
-        if "seed" not in self.final_config_dict['hyper_parameters']:
-            self.final_config_dict['hyper_parameters'] += ['seed']
+        self.final_config_dict['valid_metric_bigger'] = \
+            self.final_config_dict['valid_metric'].lower() not in SMALLER_METRICS
+
+        hyper_parameters = list(self.final_config_dict.get('hyper_parameters', []))
+        # Every sweepable option given as a list is treated as a grid axis, so
+        # that e.g. ``batch_size: [64, 256]`` (Sec. 4.9) works no matter which
+        # config file declared it.
+        for key in SWEEPABLE_KEYS:
+            value = self.final_config_dict.get(key)
+            if isinstance(value, (list, tuple)) and key not in hyper_parameters:
+                hyper_parameters.append(key)
+        if 'seed' not in hyper_parameters:
+            hyper_parameters = ['seed'] + hyper_parameters
+        self.final_config_dict['hyper_parameters'] = hyper_parameters
 
     def _init_device(self):
         use_gpu = self.final_config_dict['use_gpu']

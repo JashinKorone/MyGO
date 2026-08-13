@@ -1,10 +1,10 @@
-# split mode
-dataset_mode: 'time'
+# FakeSV+ with a global missing rate eta = 0.3 (Sec. 4.1, Table 2)
+missing_rate: 0.3
+
+# split scheme: 'event' -> Event-split (E.S., 5-fold, 80/20)
+#               'time'  -> Temporal-split (T.S., 70/15/15)
+dataset_mode: 'event'
 fold: 5
 
-# name of features
-audio_path: '/audio/'
-frame_path: '/ptvgg19_frames/'
-c3d_path: '/c3d/'
-text_path: '/txt/'
+# feature dirs, relative to ../dataset/<name>/
 emb_path: '/embs/'

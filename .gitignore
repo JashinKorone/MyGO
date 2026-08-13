@@ -1,12 +1,17 @@
 __pycache__/
-*.pyc
-*.pyo
-.env
-*.log
-outputs/
-checkpoints/
-data/
-*.pt
-*.pth
-*.ckpt
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# experiment outputs
+src/log/
+src/checkpoints/
+dataset/
+*.pkl
+*.hdf5
+
+# editors / OS
+.idea/
+.vscode/
 .DS_Store

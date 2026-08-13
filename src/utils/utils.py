@@ -11,7 +11,7 @@ import torch
 import importlib
 import datetime
 import random
-from torch.nn.init import xavier_normal_, constant_, kaiming_uniform_
+from torch.nn.init import xavier_normal_, constant_
 
 
 def get_local_time():
